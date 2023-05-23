@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz - Pratham</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:400,600">
+  <style>
+    body {
+      background-color: #f2f2f2;
+      font-family: 'Inter', Arial, sans-serif;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: royalblue;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    p {
+      font-size: 1rem;
+      margin-top: 0;
+    }
+
+    .quiz-card {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .question {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .answer {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .answer input[type="text"] {
+      flex-grow: 1;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .answer button {
+      padding: 10px 20px;
+      border-radius: 5px;
+      background-color: royalblue;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    .feedback {
+      font-size: 1rem;
+      margin-top: 5px;
+    }
+
+    .feedback.correct {
+      color: green;
+    }
+
+    .feedback.incorrect {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Do you know Pratham?</h1>
+      <p>This is a simple quiz to test your knowledge about Pratham Katakol.</p>
+    </div>
+    <div class="quiz-card">
+      <div class="question">
+        Q.1 Do I own a pet?
+      </div>
+      <div class="answer">
+        <input type="text" id="answer1">
+        <button onclick="checkAnswer(1)">Submit</button>
+      </div>
+      <p id="result1" class="feedback"></p>
+    </div>
+    <div class="quiz-card">
+      <div class="question">
+        Q.2 Where did I go for my first foreign visit?
+      </div>
+      <div class="answer">
+        <input type="text" id="answer2">
+        <button onclick="checkAnswer(2)">Submit</button>
+      </div>
+      <p id="result2" class="feedback"></p>
+    </div>
+    <div class="quiz-card">
+      <div class="question">
+        Q.3 What is the heaviest I have been? (kgs)
+      </div>
+      <div class="answer">
+        <input type="text" id="answer3">
+        <button onclick="checkAnswer(3)">Submit</button>
+      </div>
+      <p id="result3" class="feedback"></p>
+    </div>
+    <div class="quiz-card">
+      <div class="question">
+        Q.4 If I am super hungry, what will I eat first? Biryani or Pizza?
+      </div>
+      <div class="answer">
+        <input type="text" id="answer4">
+        <button onclick="checkAnswer(4)">Submit</button>
+      </div>
+      <p id="result4" class="feedback"></p>
+    </div>
+  </div>
+
+  <script>
+    function checkAnswer(questionNumber) {
+      var answerElement = document.getElementById("answer" + questionNumber);
+      var resultElement = document.getElementById("result" + questionNumber);
+      var answer = answerElement.value.toLowerCase();
+      var correctAnswer;
+
+      switch (questionNumber) {
+        case 1:
+          correctAnswer = "yes";
+          break;
+        case 2:
+          correctAnswer = "indonesia";
+          break;
+        case 3:
+          correctAnswer = "74";
+          break;
+        case 4:
+          correctAnswer = "biryani";
+          break;
+        default:
+          break;
+      }
+
+      if (answer === correctAnswer) {
+        resultElement.innerHTML = "Correct!";
+        resultElement.classList.add("correct");
+        resultElement.classList.remove("incorrect");
+      } else {
+        resultElement.innerHTML = "Incorrect. Try again.";
+        resultElement.classList.add("incorrect");
+        resultElement.classList.remove("correct");
+      }
+
+      answerElement.value = "";
+    }
+  </script>
+</body>
+
+</html>
